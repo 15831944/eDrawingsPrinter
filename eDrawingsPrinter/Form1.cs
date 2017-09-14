@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Windows.Forms;
-using System.Threading.Tasks;
 using System.IO;
 using System.Drawing.Printing;
 
@@ -102,23 +101,12 @@ namespace eDrawingsPrinter {
 
     void eDrawingControlWrapper_OnFinishedLoadingDocument(string FileName) {
       eDrawingControl1.eDrawingControlWrapper.Refresh();
-
-      PrintWait(FileName);
-    }
-
-    private async void PrintWait(string FileName) {
-      Task<bool> ip = innerprint(FileName);
-      await ip;
-    }
-
-    private async Task<bool> innerprint(string FileName) {
       FileInfo f = new FileInfo(FileName);
       int pages = eDrawingControl1.eDrawingControlWrapper.SheetCount;
       eDrawingControl1.eDrawingControlWrapper.SetPageSetupOptions(
         EModelView.EMVPrintOrientation.eLandscape, 1, 0, 0, 1, 7, GetDefaultPrinter(), 1, 1, 1, 1);
       eDrawingControl1.eDrawingControlWrapper.Print5(false,
         f.Name, false, false, false, EModelView.EMVPrintType.eScaleToFit, 4, 0, 0, false, 1, pages, "");
-      return false;
     }
 
     private void button2_Click(object sender, EventArgs e) {
