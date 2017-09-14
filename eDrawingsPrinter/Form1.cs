@@ -7,7 +7,6 @@ using System.Drawing.Printing;
 namespace eDrawingsPrinter {
   public partial class Form1 : Form {
     private eDrawingHostControl.eDrawingControl eDrawingControl1;
-    private bool initialated = false;
     private Stack listbox1items = new Stack();
 
     public Form1() {
@@ -28,7 +27,6 @@ namespace eDrawingsPrinter {
       this.eDrawingControl1.Size = new System.Drawing.Size(this.panel1.Width - 1, this.panel1.Height - 1);
       this.eDrawingControl1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom;
       this.eDrawingControl1.TabIndex = 0;
-      initialated = true;
     }
 
     private void button1_Click(object sender, EventArgs e) {
@@ -53,12 +51,8 @@ namespace eDrawingsPrinter {
     private void Form1_Load(object sender, EventArgs e) {
       Location = Properties.Settings.Default.LastLocation;
       Size = Properties.Settings.Default.LastSize;
-      if (initialated) {
-        ConnectEvents();
-      } else {
-        InitializeEDrawingComponent();
-        ConnectEvents();
-      }
+      InitializeEDrawingComponent();
+      ConnectEvents();
     }
 
     private void ConnectEvents() {
