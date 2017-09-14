@@ -5,3 +5,4 @@ obj/
 publish/
 *.pfx
 *.suo
+UpgradeLog.htm
