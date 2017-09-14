@@ -1,0 +1,7 @@
+Backup/
+ark/
+bin/
+obj/
+publish/
+*.pfx
+*.suo
