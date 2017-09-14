@@ -46,14 +46,6 @@ namespace eDrawingsPrinter {
       }
     }
 
-    private void printlist() {
-      foreach (string item in listBox1.Items) {
-        listbox1items.Push(item);
-      }
-
-      print(new FileInfo((string)listbox1items.Pop()));
-    }
-
     private void print(FileInfo file) {
       eDrawingControl1.eDrawingControlWrapper.OpenDoc(file.FullName, false, false, true, "");
     }
@@ -67,16 +59,6 @@ namespace eDrawingsPrinter {
         InitializeEDrawingComponent();
         ConnectEvents();
       }
-    }
-
-    private void DestructReconstruct() {
-      eDrawingControl1.eDrawingControlWrapper.CloseActiveDoc("");
-      foreach (Control c in Controls) {
-        if (c is eDrawingHostControl.eDrawingControl) {
-          Controls.Remove(c);
-        }
-      }
-      InitializeEDrawingComponent();
     }
 
     private void ConnectEvents() {
@@ -104,7 +86,11 @@ namespace eDrawingsPrinter {
     }
 
     private void button2_Click(object sender, EventArgs e) {
-      printlist();
+      foreach (string item in listBox1.Items) {
+        listbox1items.Push(item);
+      }
+
+      print(new FileInfo((string)listbox1items.Pop()));
     }
 
     private void Form1_FormClosing(object sender, FormClosingEventArgs e) {
