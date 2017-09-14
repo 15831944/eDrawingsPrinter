@@ -32,21 +32,15 @@ namespace eDrawingsPrinter {
     }
 
     private void button1_Click(object sender, EventArgs e) {
-      string myFile = @"D:\shared\models\2010\power supply assembly.sldasm";
-
-      if (File.Exists(myFile))
-        eDrawingControl1.eDrawingControlWrapper.OpenDoc(myFile, false, false, true, "");
-      else {
-        this.openFileDialog1.InitialDirectory = Properties.Settings.Default.LastDir;
-        this.openFileDialog1.FileName = string.Empty;
-        this.openFileDialog1.Multiselect = true;
-        this.openFileDialog1.Filter = Properties.Settings.Default.OpenDialogFilter;
-        if (this.openFileDialog1.ShowDialog(this) == DialogResult.OK) {
-          foreach (string file in this.openFileDialog1.FileNames) {
-            Properties.Settings.Default.LastDir = Path.GetDirectoryName(this.openFileDialog1.FileNames[0]);
-            if (!listBox1.Items.Contains(file)) {
-              listBox1.Items.Add(file);
-            }
+      this.openFileDialog1.InitialDirectory = Properties.Settings.Default.LastDir;
+      this.openFileDialog1.FileName = string.Empty;
+      this.openFileDialog1.Multiselect = true;
+      this.openFileDialog1.Filter = Properties.Settings.Default.OpenDialogFilter;
+      if (this.openFileDialog1.ShowDialog(this) == DialogResult.OK) {
+        foreach (string file in this.openFileDialog1.FileNames) {
+          Properties.Settings.Default.LastDir = Path.GetDirectoryName(this.openFileDialog1.FileNames[0]);
+          if (!listBox1.Items.Contains(file)) {
+            listBox1.Items.Add(file);
           }
         }
       }
