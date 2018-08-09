@@ -31,7 +31,11 @@
     <MapFileExtensions>true</MapFileExtensions>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
+<<<<<<< HEAD
     <ApplicationRevision>1</ApplicationRevision>
+=======
+    <ApplicationRevision>0</ApplicationRevision>
+>>>>>>> bcaab85804681ab0f3a0c3683d7dfae8c7218e19
     <ApplicationVersion>1.2.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
